@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAVATI — Refined Luxury</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0A0A0A;
+    --white: #F8F6F3;
+    --cream: #EDE8E1;
+    --warm-gray: #B5AFA7;
+    --mid-gray: #6B655D;
+    --dark-gray: #1A1A1A;
+    --gold: #C4A265;
+    --gold-light: #D4BA85;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 28px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    transition: all 0.6s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(10,10,10,0.97);
+    padding: 18px 5%;
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(196,162,101,0.1);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 1.4rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color 0.4s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 0.5px;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 20px;
+    position: relative;
+  }
+
+  .nav-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    background: var(--white);
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu-btn span:nth-child(1) { top: 0; }
+  .nav-menu-btn span:nth-child(2) { top: 50%; }
+  .nav-menu-btn span:nth-child(3) { bottom: 0; }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 40%, rgba(196,162,101,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 70% 60%, rgba(237,232,225,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-season {
+    font-family: var(--sans);
+    font-weight: 200;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    animation: fadeDown 1.2s ease-out 0.2s both;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    text-indent: 0.4em;
+    line-height: 1;
+    margin-bottom: 32px;
+    animation: fadeUp 1.5s ease-out 0.4s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    color: var(--warm-gray);
+    letter-spacing: 0.08em;
+    margin-bottom: 56px;
+    animation: fadeUp 1.5s ease-out 0.7s both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    padding: 18px 52px;
+    border: 0.5px solid var(--gold);
+    transition: all 0.6s ease;
+    animation: fadeUp 1.5s ease-out 1s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+    z-index: -1;
+  }
+
+  .hero-cta:hover { color: var(--black); }
+  .hero-cta:hover::before { transform: scaleX(1); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    animation: fadeIn 2s ease-out 2s both;
+  }
+
+  .hero-scroll span {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mid-gray);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    animation: scrollDown 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { top: -100%; }
+    100% { top: 100%; }
+  }
+
+  /* ── Statement Banner ── */
+  .statement {
+    padding: 120px 8%;
+    text-align: center;
+    position: relative;
+  }
+
+  .statement::before,
+  .statement::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .statement::before { top: 0; }
+  .statement::after { bottom: 0; }
+
+  .statement-text {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    line-height: 1.6;
+    color: var(--warm-gray);
+    max-width: 800px;
+    margin: 0 auto;
+    letter-spacing: 0.02em;
+  }
+
+  .statement-text em {
+    color: var(--white);
+    font-style: italic;
+  }
+
+  /* ── Collection Grid ── */
+  .collection {
+    padding: 100px 5%;
+  }
+
+  .collection-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .collection-label {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .collection-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.05em;
+  }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .collection-item {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--dark-gray);
+  }
+
+  .collection-item .item-bg {
+    position: absolute;
+    inset: 0;
+    transition: transform 1.2s ease;
+  }
+
+  .collection-item:nth-child(1) .item-bg {
+    background: linear-gradient(145deg, #1a1916 0%, #2a2520 40%, #1a1816 100%);
+  }
+  .collection-item:nth-child(2) .item-bg {
+    background: linear-gradient(145deg, #1c1b18 0%, #252320 40%, #1a1918 100%);
+  }
+  .collection-item:nth-child(3) .item-bg {
+    background: linear-gradient(145deg, #181a1c 0%, #20242a 40%, #181a1c 100%);
+  }
+  .collection-item:nth-child(4) .item-bg {
+    background: linear-gradient(145deg, #1c1a18 0%, #2a2822 40%, #1c1a18 100%);
+  }
+  .collection-item:nth-child(5) .item-bg {
+    background: linear-gradient(145deg, #1a1a1a 0%, #262626 40%, #1a1a1a 100%);
+  }
+  .collection-item:nth-child(6) .item-bg {
+    background: linear-gradient(145deg, #1a1918 0%, #282520 40%, #1a1918 100%);
+  }
+
+  .collection-item:hover .item-bg { transform: scale(1.05); }
+
+  .collection-item .item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .collection-item .item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    z-index: 2;
+    transform: translateY(10px);
+    opacity: 0;
+    transition: all 0.6s ease;
+  }
+
+  .collection-item:hover .item-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .item-name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .item-category {
+    font-family: var(--sans);
+    font-weight: 200;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .item-center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 3rem;
+    color: rgba(248,246,243,0.08);
+    letter-spacing: 0.15em;
+    pointer-events: none;
+  }
+
+  /* ── Ethos Section ── */
+  .ethos {
+    padding: 120px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .ethos-visual {
+    aspect-ratio: 4/5;
+    background: linear-gradient(160deg, #1a1916, #252220, #1a1816);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ethos-visual::before {
+    content: 'Dv';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 6rem;
+    color: rgba(196,162,101,0.06);
+    letter-spacing: 0.15em;
+  }
+
+  .ethos-visual::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 0.5px solid rgba(196,162,101,0.1);
+  }
+
+  .ethos-content .section-label {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .ethos-content h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.3;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .ethos-content p {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: var(--warm-gray);
+    margin-bottom: 20px;
+  }
+
+  .ethos-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .ethos-detail-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .ethos-detail-value {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--white);
+  }
+
+  /* ── Pillars ── */
+  .pillars {
+    padding: 100px 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .pillars-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .pillar {
+    padding: 60px 40px;
+    border: 0.5px solid rgba(255,255,255,0.04);
+    transition: all 0.6s ease;
+    position: relative;
+  }
+
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0.5px;
+    background: var(--gold);
+    transition: width 0.8s ease;
+  }
+
+  .pillar:hover::before { width: 100%; }
+
+  .pillar-number {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 2.5rem;
+    color: rgba(196,162,101,0.15);
+    margin-bottom: 24px;
+  }
+
+  .pillar h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .pillar p {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--warm-gray);
+  }
+
+  /* ── Newsletter ── */
+  .newsletter {
+    padding: 120px 8%;
+    text-align: center;
+    position: relative;
+  }
+
+  .newsletter::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(196,162,101,0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .newsletter-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .newsletter .collection-label {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .newsletter h2 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 16px;
+    letter-spacing: 0.03em;
+  }
+
+  .newsletter p {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--warm-gray);
+    margin-bottom: 48px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    border: 0.5px solid rgba(196,162,101,0.25);
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 18px 24px;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    outline: none;
+  }
+
+  .newsletter-form input::placeholder {
+    color: var(--mid-gray);
+    letter-spacing: 0.1em;
+  }
+
+  .newsletter-form button {
+    background: transparent;
+    border: none;
+    border-left: 0.5px solid rgba(196,162,101,0.25);
+    padding: 18px 32px;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    white-space: nowrap;
+  }
+
+  .newsletter-form button:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* ── Footer ── */
+  footer {
+    padding: 80px 8% 50px;
+    border-top: 0.5px solid rgba(255,255,255,0.04);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+  }
+
+  .footer-brand .nav-logo {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .footer-brand p {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: var(--mid-gray);
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    margin-bottom: 24px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-col a {
+    font-size: 0.8rem;
+    color: var(--mid-gray);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 40px;
+    border-top: 0.5px solid rgba(255,255,255,0.04);
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .footer-bottom p {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--mid-gray);
+    text-transform: uppercase;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-social a {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--mid-gray);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .footer-social a:hover { color: var(--gold); }
+
+  /* ── Animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-menu-btn { display: block; }
+    .collection-grid { grid-template-columns: repeat(2, 1fr); }
+    .ethos { grid-template-columns: 1fr; gap: 50px; }
+    .ethos-visual { max-height: 400px; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 600px) {
+    .collection-grid { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form button { border-left: none; border-top: 0.5px solid rgba(196,162,101,0.25); }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Davati</a>
+  <ul class="nav-links">
+    <li><a href="#collection">Collection</a></li>
+    <li><a href="#ethos">Ethos</a></li>
+    <li><a href="#craft">Craft</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-season">Autumn / Winter 2026</div>
+    <h1 class="hero-title">Davati</h1>
+    <p class="hero-subtitle">Where silence speaks louder than spectacle</p>
+    <a href="#collection" class="hero-cta">Explore the Collection</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Statement -->
+<div class="statement reveal">
+  <p class="statement-text">
+    We believe luxury is not what you add — it is <em>what remains</em> when everything unnecessary has been taken away.
+  </p>
+</div>
+
+<!-- Collection -->
+<section class="collection" id="collection">
+  <div class="collection-header reveal">
+    <div class="collection-label">The Collection</div>
+    <h2 class="collection-title">Autumn / Winter 2026</h2>
+  </div>
+  <div class="collection-grid">
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">I</div>
+      <div class="item-content">
+        <div class="item-name">The Overcoat</div>
+        <div class="item-category">Outerwear</div>
+      </div>
+    </div>
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">II</div>
+      <div class="item-content">
+        <div class="item-name">The Knit</div>
+        <div class="item-category">Knitwear</div>
+      </div>
+    </div>
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">III</div>
+      <div class="item-content">
+        <div class="item-name">The Trouser</div>
+        <div class="item-category">Tailoring</div>
+      </div>
+    </div>
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">IV</div>
+      <div class="item-content">
+        <div class="item-name">The Shirt</div>
+        <div class="item-category">Essentials</div>
+      </div>
+    </div>
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">V</div>
+      <div class="item-content">
+        <div class="item-name">The Scarf</div>
+        <div class="item-category">Accessories</div>
+      </div>
+    </div>
+    <div class="collection-item reveal">
+      <div class="item-bg"></div>
+      <div class="item-overlay"></div>
+      <div class="item-center-icon">VI</div>
+      <div class="item-content">
+        <div class="item-name">The Layer</div>
+        <div class="item-category">Outerwear</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ethos -->
+<section class="ethos reveal" id="ethos">
+  <div class="ethos-visual"></div>
+  <div class="ethos-content">
+    <div class="section-label">Our Ethos</div>
+    <h2>Designed for Those Who Need No Introduction</h2>
+    <p>Davati was founded on a single principle: that the most powerful statement is the one left unsaid. Our garments are crafted for individuals who understand that true distinction lies in subtlety — in the weight of a fabric, the fall of a seam, the quiet confidence of a perfect fit.</p>
+    <p>Each piece is considered, intentional, and made to endure — both in construction and in relevance.</p>
+    <div class="ethos-details">
+      <div>
+        <div class="ethos-detail-label">Origin</div>
+        <div class="ethos-detail-value">Made in Italy</div>
+      </div>
+      <div>
+        <div class="ethos-detail-label">Fabrics</div>
+        <div class="ethos-detail-value">Sustainably Sourced</div>
+      </div>
+      <div>
+        <div class="ethos-detail-label">Production</div>
+        <div class="ethos-detail-value">Limited Editions</div>
+      </div>
+      <div>
+        <div class="ethos-detail-label">Quality</div>
+        <div class="ethos-detail-value">Hand-Finished</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="pillars" id="craft">
+  <div class="pillars-header reveal">
+    <div class="collection-label">The Craft</div>
+    <h2 class="collection-title">Three Pillars</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar reveal">
+      <div class="pillar-number">01</div>
+      <h3>Material</h3>
+      <p>We source exclusively from heritage mills across Italy and Japan. Every fabric is selected for its hand-feel, drape, and longevity — never for trend alone.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-number">02</div>
+      <h3>Construction</h3>
+      <p>Each garment passes through the hands of master artisans who understand that the invisible details — the interior seams, the reinforced stress points — define true quality.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-number">03</div>
+      <h3>Restraint</h3>
+      <p>We produce in limited quantities by design. Davati does not chase seasons or saturate. Scarcity is not a strategy — it is a consequence of care.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section class="newsletter" id="contact">
+  <div class="newsletter-inner reveal">
+    <div class="collection-label">Stay Informed</div>
+    <h2>Private Access</h2>
+    <p>Receive early access to new collections, exclusive invitations, and stories from the atelier. Reserved for those who appreciate the art of less.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Your email address">
+      <button type="button">Subscribe</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Davati</a>
+      <p>Refined luxury for those who lead quietly. Designed with intention, crafted without compromise.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#">Collection</a></li>
+        <li><a href="#">Lookbook</a></li>
+        <li><a href="#">Atelier</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Shipping</a></li>
+        <li><a href="#">Returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Davati. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
